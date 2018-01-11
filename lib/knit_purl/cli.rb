@@ -2,23 +2,23 @@
 class KnitPurl::CLI
 
   def call
-
     list_patterns
     menu
     goodbye
   end
 
   def list_patterns
-    puts "Patterns for knitters"
+    puts "Patterns for knitters:"
 #Patterns.all returns a whole bunch of patterns
 #@patterns doesn't matter what website data comes from
 #an object called Patterns that has a class method all
 #that should return patterns
-    @patterns = KnitPurl::Patterns.all
-    @patterns.each.with_index(1) do |pattern, i|
-      puts "#{i}. #{pattern}"
-    end
+    @patterns = KnitPurl::Patterns.variety
+    @patterns.each.with_index(1) do |pattern,i|
+    #   puts "#{i}. #{pattern.name} - #{pattern.price} - #{pattern.brand} - #{pattern.url}"
+    # end
   end
+
 
   def menu
     input = nil
