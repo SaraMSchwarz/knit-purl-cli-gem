@@ -14,9 +14,6 @@ class KnitPurl::CLI
     puts "2. Blankets"
     puts "3. Garments"
     puts "4. Housewares"
-    @patterns = KnitPurl::Patterns.knitting
-    # @patterns.each.with_index(1) do |pattern,i|
-    #   puts "#{i}. #{pattern.name} - #{pattern.price} - #{pattern.brand} - #{pattern.url}"
     end
   end
 
