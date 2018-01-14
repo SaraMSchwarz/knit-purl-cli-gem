@@ -1,7 +1,10 @@
+# require 'open-uri'
+# require 'nokogiri'
+
 class KnitPurl::Scraper
 
   def get_page
-    doc = Nokogiri::HTML(open("https://www.purlsoho.com/patterns/knitting"))
+    Nokogiri::HTML(open("https://www.purlsoho.com/patterns/knitting"))
   end
 
   def scrape_patterns_index

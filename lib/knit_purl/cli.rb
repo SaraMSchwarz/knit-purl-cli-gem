@@ -6,32 +6,30 @@ class KnitPurl::CLI
     list_patterns
     menu
     goodbye
-  end
+  end#end of call
 
   def list_patterns
-    puts "Enter the number of category you want more info on or type list to get the categories or type exit"
-    puts "1. Accessories"
-    puts "2. Blankets"
-    puts "3. Garments"
-    puts "4. Housewares"
+    puts "Enter the number of pattern category you want more info on or type exit."
+    puts "1. Sweaters" #https://www.loveknitting.com/us/knitting-patterns#?garment=1739&
+    puts "2. Hats" #https://www.loveknitting.com/us/knitting-patterns#?garment=1736&
+    puts "3. Scarves" #https://www.loveknitting.com/us/knitting-patterns#?garment=1741&
     end
-  end
+  end#end of list_patterns
 
 
   def menu
     input = nil
     while input != "exit"
-
-
-
       input = gets.strip.downcase
 
       if input.to_i > 0
         puts @patterns[input.to_i-1]
       elsif input == "list"
         list_patterns
+      elsif input == "exit"
+        "Come back later to look for new patters!"
       else
-        puts "Your selection was incorrect, please type list or exit."
+        puts "Your selection was incorrect, please type list to see the categories or exit to exit the program."
       end
   end#end of menu
 
