@@ -3,8 +3,15 @@
 
 class KnitPurl::Scraper
 
-  def get_page
-    Nokogiri::HTML(open("https://www.purlsoho.com/patterns/knitting"))
+  def self.get_page
+    doc = Nokogiri::HTML(open("https://www.loveknitting.com/us/knitting-patterns#?"))
+    patterns = []
+    name = pattern.css("").attribute("data-name")
+    brand = pattern.css("").attribute("data-brand")
+    price = pattern.css("").attribute("data-price")
+#store each pattern's name, brand and price in a hash and push each hash into our array.
+    patterns << {name: name, brand: brand, price: price}
+    patterns
   end
 
   def scrape_patterns_index
