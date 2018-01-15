@@ -1,41 +1,73 @@
 #this is the CLI controller
 class KnitPurl::CLI
 
+#three methods; list_patterns, menu and goodbye
   def call
-    puts "Patterns for knitters:"
+    puts "♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥"
+    puts "╔════════════════════════════════╗"
+    puts "      Patterns for knitters"
+    puts "╚════════════════════════════════╝"
+    puts "♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥"
     list_patterns
     menu
     goodbye
-  end#end of call
+  end#of call
 
   def list_patterns
+    puts ""
     puts "Enter the number of pattern category you want more info on or type exit."
-    puts "1. Sweaters" #https://www.loveknitting.com/us/knitting-patterns#?garment=1739&
-    puts "2. Hats" #https://www.loveknitting.com/us/knitting-patterns#?garment=1736&
-    puts "3. Scarves" #https://www.loveknitting.com/us/knitting-patterns#?garment=1741&
-    end
-  end#end of list_patterns
+    puts ""
+    puts "1. Sweaters"
+    puts "2. Hats"
+    puts "3. Scarves"
+    puts "4. Cardigans"
+  end#of list_patterns
 
 
   def menu
+
     input = nil
+#gets users input and puts it in downcase
     while input != "exit"
+
       input = gets.strip.downcase
 
-      if input.to_i > 0
-        puts @patterns[input.to_i-1]
+      if input.to_i == 1
+        @scraper = KnitPurl::Scraper.new("sweaters")
+        @scraper.scrape
+
+      elsif input.to_i == 2
+        @scraper = KnitPurl::Scraper.new("hat")
+        @scraper.scrape
+
+      elsif input.to_i == 3
+        @scraper = KnitPurl::Scraper.new("scarf")
+        @scraper.scrape
+
+      elsif input.to_i == 4
+        @scraper = KnitPurl::Scraper.new("cardigan")
+        @scraper.scrape
+
       elsif input == "list"
         list_patterns
+
       elsif input == "exit"
         "Come back later to look for new patters!"
+
       else
         puts "Your selection was incorrect, please type list to see the categories or exit to exit the program."
-      end
-  end#end of menu
+
+      end#of conditionals
+    end#of while
+  end#of menu
 
 
   def goodbye
-    puts "Come back later to look for new patters!"
-  end#end of goodbye
+    puts "╔══════════════════════════════════════════╗"
+    puts "  Come back later to look for new patters! "
+    puts "╚══════════════════════════════════════════╝"
 
-end#end of class
+
+  end#of goodbye
+
+end#of class

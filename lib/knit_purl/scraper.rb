@@ -1,32 +1,35 @@
-# require 'open-uri'
-# require 'nokogiri'
+require 'open-uri'
+require 'nokogiri'
 require 'pry'
 
 class KnitPurl::Scraper
 
-  def self.get_page
-    doc = Nokogiri::HTML(open("https://www.loveknitting.com/us/knitting-patterns#?"))
-    binding.pry
+  def initialize(category)
+#initializes @url, using string interpolation for category (sweaters, cardigans, hats) in the url
+    @url = "https://www.loveknitting.com/us/#{category}-knitting-patterns"
+  end#of initialize
+
+  def scrape
+#opens the initialized url using Nokogiri
+    doc = Nokogiri::HTML(open(@url))
+#creates a variable called patterns which is an empty array
     patterns = []
+#scrapes name and price from the CSS file
     doc.css(".card").each do |pattern|
-      name = pattern.css(".card span").attribute("data-name")
-      brand = pattern.css("").attribute("data-brand")
-      price = pattern.css("").attribute("data-price")
-
-#store each pattern's name, brand and price in a hash and push each hash into our array.
-    patterns << {name: name, brand: brand, price: price}
+      name = pattern.css('.card-info span').text
+      price = pattern.css('span.price').text
+#store each pattern's name and price in a hash and pushes each hash into our patterns array.
+    patterns << {name: name, price: price}
+  end#of scrape
+#returns patterns
     patterns
-  end
-  end
+  end#of patterns
 
-  def scrape_patterns_index
-    self.get_page.css
-  end
 
-  def make_patterns
-    scrape_patterns_index.each do |p|
-      KnitPurl::Pattern.new_from_index_page(p)
-    end
-  end
+  # def make_patterns
+  #   scrape_patterns_index.each do |p|
+  #     KnitPurl::Pattern.new_from_index_page(p)
+  #   end
+  # end
 
 end#of class

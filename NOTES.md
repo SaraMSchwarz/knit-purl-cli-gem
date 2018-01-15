@@ -17,4 +17,4 @@ The data is scraped off of http://www.loveknitting.com/us/knitting-patterns
 using the three categories mentioned above.
 
 The idea is that when a user selects for example the sweater category (1), a
-list of all sweaters should show up with the name, brand and price. 
+list of all sweaters should show up with the name and price.
