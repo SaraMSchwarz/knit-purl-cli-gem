@@ -21,6 +21,7 @@ class KnitPurl::CLI
     puts "2. Hats"
     puts "3. Scarves"
     puts "4. Cardigans"
+    puts "5. Blankets and throws"
   end#of list_patterns
 
 
@@ -46,6 +47,10 @@ class KnitPurl::CLI
 
       elsif input.to_i == 4
         @scraper = KnitPurl::Scraper.new("cardigan")
+        @scraper.scrape
+
+      elsif input.to_i == 5
+        @scraper = KnitPurl::Scraper.new("blanket")
         @scraper.scrape
 
       elsif input == "list"

@@ -26,10 +26,4 @@ class KnitPurl::Scraper
   end#of patterns
 
 
-  # def make_patterns
-  #   scrape_patterns_index.each do |p|
-  #     KnitPurl::Pattern.new_from_index_page(p)
-  #   end
-  # end
-
 end#of class
