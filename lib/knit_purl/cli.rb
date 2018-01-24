@@ -35,23 +35,23 @@ class KnitPurl::CLI
 
       if input.to_i == 1
         @scraper = KnitPurl::Scraper.new("sweaters")
-        @scraper.scrape
+        puts @scraper.scrape
 
       elsif input.to_i == 2
         @scraper = KnitPurl::Scraper.new("hat")
-        @scraper.scrape
+        puts @scraper.scrape
 
       elsif input.to_i == 3
         @scraper = KnitPurl::Scraper.new("scarf")
-        @scraper.scrape
+        puts @scraper.scrape
 
       elsif input.to_i == 4
         @scraper = KnitPurl::Scraper.new("cardigan")
-        @scraper.scrape
+        puts @scraper.scrape
 
       elsif input.to_i == 5
         @scraper = KnitPurl::Scraper.new("blanket")
-        @scraper.scrape
+        puts @scraper.scrape
 
       elsif input == "list"
         list_patterns
