@@ -6,7 +6,7 @@ class KnitPurl::Scraper
 
   def initialize(category)
 #initializes @url, using string interpolation for category (sweaters, cardigans, hats) in the url
-    @url = "https://www.loveknitting.com/us/#{category}-knitting-patterns"
+    @url = "https://www.loveknitting.com/us/#{category}-knitting-patterns?limit=30"
   end#of initialize
 
   def scrape
