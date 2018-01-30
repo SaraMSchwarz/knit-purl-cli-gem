@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
 require "bundler/setup"
-require "./lib/knit_purl"
+require_relative "../lib/knit_purl"
 
 #we can program everything in the below object
 KnitPurl::CLI.new.call
