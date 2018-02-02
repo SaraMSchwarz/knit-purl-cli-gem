@@ -8,21 +8,15 @@ class KnitPurl::CLI
     puts "      Patterns for knitters"
     puts "╚════════════════════════════════╝"
     puts "♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥"
-    menu
     KnitPurl::Scraper.sweater_scraper
-    get_patterns
-    list_patterns
-    goodbye
-  end
-
-  def get_patterns
-    @patterns = KnitPurl::Pattern.all
+    menu
   end
 
   def list_patterns
-    @patterns.each.with_index(1) do |b, i|
-      puts "#{i}. #{b.name} (#{b.price})"
+    KnitPurl::Pattern.all.each.with_index(1) do |b, i|
+    puts "#{i}. #{b.name} (#{b.price})"
     end
+  end
 
   end
 
@@ -41,12 +35,7 @@ class KnitPurl::CLI
       input = gets.chomp
 
       if input.to_i == 1
-        puts list_patterns
-        # puts get_patterns
-        # pat = @patterns[input.to_i - 1]
-        # @patterns.each.with_index(1) do |b, i|
-        # puts "#{b.name} #{b.price}"
-
+        list_patterns
 
       elsif input == "menu"
         menu
@@ -119,4 +108,4 @@ class KnitPurl::CLI
   #
   # end#of goodbye
 
-end#of class
+# end#of class
