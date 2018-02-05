@@ -11,7 +11,6 @@ class Category
     @patterns = patterns_array.collect do |pattern_attrb|
       Pattern.new(self, pattern_attrb)
     end
-
     @@all << self
   end
 

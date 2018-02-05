@@ -9,7 +9,6 @@ The categories are:
 2. Hats
 3. Scarves
 4. Cardigans
-5. Blankets and throws
 
 If the user types anything else than numbers 1:3, exit or list, the application
 tells them their selection is incorrect, please type list to see the categories

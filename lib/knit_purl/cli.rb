@@ -1,7 +1,7 @@
-# require 'pry'
 class CommandLineInterface
 
   def start
+    puts "Fetching data.."
 
     sweater = Category.new("Sweaters", Scraper.sweater_scraper)
     hat = Category.new("Hats", Scraper.hat_scraper)
@@ -23,6 +23,7 @@ class CommandLineInterface
   def menu
 
     while @input != "exit"
+
     puts ""
     puts "Enter the number of pattern category to see a list of available patterns, or type exit."
     puts "(If a pattern is free, no price is displayed.)"
@@ -40,6 +41,7 @@ class CommandLineInterface
 
       elsif @input.downcase == "list"
         menu
+
       elsif @input.downcase == "exit"
         exit
 
@@ -49,7 +51,7 @@ class CommandLineInterface
       end
 
     end
-  end#ofmenu
+  end
 
   def select_pattern_by_category
     selected_category = Category.find(@input)
@@ -59,7 +61,7 @@ class CommandLineInterface
       puts ""
 
       if index.between?(0,8)
-         spacer= " "
+        spacer = " "
       else
         spacer = ""
       end
@@ -68,65 +70,4 @@ class CommandLineInterface
     end
   end
 
-end#ofclass
-
-
-
-
-
-
-
-
-
-
-
-
-  #   while input != "exit"
-  #
-  #     input = gets.strip.downcase
-  #
-  #     if input.to_i == 1
-  #       @sweater_scraper = KnitPurl::Scraper.new
-  #       @sweater_scraper.scrape
-  #       puts @pattern_info
-  #
-  #
-  #     elsif input.to_i == 2
-  #       @scraper = KnitPurl::Scraper.new("hat")
-  #       puts @scraper.scrape
-  #
-  #     elsif input.to_i == 3
-  #       @scraper = KnitPurl::Scraper.new("scarf")
-  #       puts @scraper.scrape
-  #
-  #     elsif input.to_i == 4
-  #       @scraper = KnitPurl::Scraper.new("cardigan")
-  #       puts @scraper.scrape
-  #
-  #     elsif input.to_i == 5
-  #       @scraper = KnitPurl::Scraper.new("blanket")
-  #       puts @scraper.scrape
-  #
-  #     elsif input == "list"
-  #       list_patterns
-  #
-  #     elsif input == "exit"
-  #       "Come back later to look for new patters!"
-  #
-  #     else
-  #       puts "Your selection was incorrect, please type list to see the categories or exit to exit the program."
-  #
-  #     end#of conditionals
-  #   end#of while
-  # end#of menu
-
-
-  # def goodbye
-  #   puts "╔══════════════════════════════════════════╗"
-  #   puts "  Come back later to look for new patters! "
-  #   puts "╚══════════════════════════════════════════╝"
-  #
-  #
-  # end#of goodbye
-
-# end#of class
+end

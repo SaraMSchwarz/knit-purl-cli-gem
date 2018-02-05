@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["<saramschwarz@gmail.com>"]
 
   spec.summary       = %q{gem for knitting patterns.}
-  spec.description   = %q{Pulling knitting patterns from websites.}
+  spec.description   = %q{Pulling knitting patterns from a website using specific categories.}
   spec.homepage      = "https://github.com/SaraMSchwarz/knit-purl-cli-gem."
   spec.license       = "MIT"
 
