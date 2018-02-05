@@ -23,9 +23,4 @@ class Category
     @@all
   end
 
-  # def self.print_all
-  #   all.each_with_index do |category, index|
-  #     puts "#{index+1}.  #{category.name}"
-  #   end
-  # end
 end

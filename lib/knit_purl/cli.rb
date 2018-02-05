@@ -9,13 +9,14 @@ class CommandLineInterface
     cardigan = Category.new("Cardigans", Scraper.cardigans_scraper)
 
     @input = nil
-
+    puts ""
+    puts ""
     puts "♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥"
     puts "╔════════════════════════════════╗"
     puts "      Patterns for knitters"
     puts "╚════════════════════════════════╝"
     puts "♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥"
-
+    puts ""
     menu
   end
 
@@ -24,25 +25,24 @@ class CommandLineInterface
     while @input != "exit"
     puts ""
     puts "Enter the number of pattern category to see a list of available patterns, or type exit."
+    puts "(If a pattern is free, no price is displayed.)"
     puts ""
-    puts "1. Sweaters"
-    puts "2. Hats"
-    puts "3. Scarves"
-    puts "4. Cardigans"
-
-    # Category.print_all
+    puts ""
+    puts "1.   Sweaters"
+    puts "2.   Hats"
+    puts "3.   Scarves"
+    puts "4.   Cardigans"
 
     @input = gets.strip
 
-      if @input.to_i == 1
-        puts select_pattern_by_category
+      if [1,2,3,4].include?(@input.to_i)
+        select_pattern_by_category
 
       elsif @input.downcase == "list"
         menu
       elsif @input.downcase == "exit"
         exit
-      # elsif @input.to_i.between?(1, Category.all.count)
-      #   select_pattern_by_category
+
       else
         "Your selection was incorrect, please type list to see the categories or exit to exit the program."
         menu
@@ -64,7 +64,7 @@ class CommandLineInterface
         spacer = ""
       end
 
-      puts "#{spacer}#{index+1}.   #{pattern.title}   #{pattern.price}"
+      puts "#{spacer}#{index+1}.   #{pattern.name}  #{pattern.price}"
     end
   end
 
