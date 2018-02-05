@@ -1,22 +1,24 @@
-class KnitPurl::Pattern
-attr_accessor :name, :price
+class Pattern
+  attr_accessor :name, :price, :category
 
-@@all = []
+  @@all = []
 
-  # def initialize(name, price)
-  #   @name = name
-  #   @price = price
-  #
-  #   @@all << self
-  # end
+  def initialize(category, attrb)
+    attrb.each do |attrb_name, attrb_value|
+      self.send("#{attrb_name}=", attrb_value)
+    end
+    @category = category
+    @@all << self
+  end
 
   def self.all
     @@all
   end
 
-  def save
-    @@all << self
+  def self.print_all
+    all.each_with_index do |pat, index|
+      puts "#{index+1}.     #{pat.title name}"
+    end
   end
-
 
 end

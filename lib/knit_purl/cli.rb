@@ -1,26 +1,28 @@
-#this is the CLI controller
-require 'pry'
-class KnitPurl::CLI
+# require 'pry'
+class CommandLineInterface
 
-  def call
+
+  def start
+
+    sweater = Category.new("Sweaters", Scraper.sweater_scraper)
+    hat = Category.new("Hats", Scraper.hat_scraper)
+    scarf = Category.new("Scarves", Scraper.scarves_scraper)
+    cardigan = Category.new("Cardigans", Scraper.cardigan_scraper)
+
+    @input = nil
+
     puts "♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥"
     puts "╔════════════════════════════════╗"
     puts "      Patterns for knitters"
     puts "╚════════════════════════════════╝"
     puts "♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥  ♥‿♥"
-    KnitPurl::Scraper.sweater_scraper
+
     menu
   end
 
-  def list_patterns
-    KnitPurl::Pattern.all.each.with_index(1) do |b, i|
-    puts "#{i}. #{b.name} (#{b.price})"
-    end
-  end
-
-  end
-
   def menu
+
+    while @input != "exit"
     puts ""
     puts "Enter the number of pattern category you want more info on or type exit."
     puts ""
@@ -28,26 +30,43 @@ class KnitPurl::CLI
     puts "2. Hats"
     puts "3. Scarves"
     puts "4. Cardigans"
-    puts "5. Blankets and throws"
 
-    input = nil
-    while input != "exit"
-      input = gets.chomp
+    Category.print_all
 
-      if input.to_i == 1
-        list_patterns
+    @input = gets.strip
 
-      elsif input == "menu"
+      if @input.downcase == "list"
         menu
+      elsif @input.downcase == "exit"
+        exit
+      elsif @input.to_i.between?(1, Category.all.count)
+        select_pattern_by_category
+      else
+        "Your selection was incorrect, please type list to see the categories or exit to exit the program."
+        menu
+      end
 
-      elsif input == "exit"
-        puts  "Come back later to look for new patters!"
+    end
+  end#ofmenu
 
-      elsif
-        puts "Your selection was incorrect, please type list to see the categories or exit to exit the program."
-      end#ofmethod
-     end
-   end
+  def select_pattern_by_category
+    selected_category = Category.find(@input)
+    puts "#{selected_category.name}:"
+
+    selected_category.patterns.each_with_index do |pattern, index|
+      puts ""
+
+      if index.between?(0,8)
+         spacer= " "
+      else
+        spacer = ""
+      end
+
+      puts "#{spacer}#{index+1}.   #{pattern.title}   #{pattern.price}"
+    end
+  end
+
+end#ofclass
 
 
 
