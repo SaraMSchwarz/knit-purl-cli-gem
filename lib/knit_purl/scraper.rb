@@ -1,49 +1,51 @@
-require 'open-uri'
-require 'nokogiri'
-require 'pry'
+# require 'open-uri'
+# require 'nokogiri'
+# require 'pry'
 
-class KnitPurl::Scraper
+class Scraper
 
   def self.sweater_scraper
-    page = Nokogiri::HTML(open("https://www.loveknitting.com/us/sweaters-knitting-patterns"))
-    page.css(".card").collect do |b|
-      pattern = KnitPurl::Pattern.new
-      pattern.name = b.css('.card-info span').text
-      pattern.price = b.css('span.price').text
-      pattern.save
+    sweater = Nokogiri::HTML(open("https://www.loveknitting.com/us/sweaters-knitting-patterns"))
+    sweater.css(".card").collect do |pattern|
+      pattern_info = {
+        :name => pattern.css('.card-info span').text,
+        :price => pattern.css('span.price').text
+      }
+      pattern_info
     end
   end
 
   def self.hat_scraper
-    page = Nokogiri::HTML(open("https://www.loveknitting.com/us/hat-knitting-patterns"))
-    page.css(".card").collect do |b|
-      pattern = KnitPurl::Pattern.new
-      pattern.name = b.css('.card-info span').text
-      pattern.price = b.css('span.price').text
-      pattern.save
-    pattern
+    hat = Nokogiri::HTML(open("https://www.loveknitting.com/us/hat-knitting-patterns"))
+    hat.css(".card").collect do |pattern|
+      pattern_info = {
+        :name => pattern.css('.card-info span').text,
+        :price => pattern.css('span.price').text
+      }
+      pattern_info
     end
   end
 
   def self.scarves_scraper
-    page = Nokogiri::HTML(open("https://www.loveknitting.com/us/scarf-knitting-patterns"))
-    page.css(".card").collect do |b|
-      pattern = KnitPurl::Pattern.new
-      pattern.name = b.css('.card-info span').text
-      pattern.price = b.css('span.price').text
-      pattern.save
-    pattern
+    scarf = Nokogiri::HTML(open("https://www.loveknitting.com/us/scarf-knitting-patterns"))
+    scarf.css(".card").collect do |pattern|
+      pattern_info = {
+        :name => pattern.css('.card-info span').text,
+        :price => pattern.css('span.price').text
+      }
+      pattern_info
     end
   end
 
   def self.cardigans_scraper
-    page = Nokogiri::HTML(open("https://www.loveknitting.com/us/cardigan-knitting-patterns"))
-    page.css(".card").collect do |b|
-      pattern = KnitPurl::Pattern.new
-      pattern.name = b.css('.card-info span').text
-      pattern.price = b.css('span.price').text
-      pattern.save
-    pattern
+    cardigan = Nokogiri::HTML(open("https://www.loveknitting.com/us/cardigan-knitting-patterns"))
+    cardigan.css(".card").collect do |pattern|
+      pattern_info = {
+        :name => pattern.css('.card-info span').text,
+        :price => pattern.css('span.price').text
+      }
+      pattern_info
     end
   end
+
 end

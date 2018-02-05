@@ -1,4 +1,4 @@
-class Pattern
+class Pattern < Category
   attr_accessor :name, :price, :category
 
   @@all = []

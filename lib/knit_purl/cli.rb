@@ -1,13 +1,12 @@
 # require 'pry'
 class CommandLineInterface
 
-
   def start
 
     sweater = Category.new("Sweaters", Scraper.sweater_scraper)
     hat = Category.new("Hats", Scraper.hat_scraper)
     scarf = Category.new("Scarves", Scraper.scarves_scraper)
-    cardigan = Category.new("Cardigans", Scraper.cardigan_scraper)
+    cardigan = Category.new("Cardigans", Scraper.cardigans_scraper)
 
     @input = nil
 
@@ -24,23 +23,26 @@ class CommandLineInterface
 
     while @input != "exit"
     puts ""
-    puts "Enter the number of pattern category you want more info on or type exit."
+    puts "Enter the number of pattern category to see a list of available patterns, or type exit."
     puts ""
     puts "1. Sweaters"
     puts "2. Hats"
     puts "3. Scarves"
     puts "4. Cardigans"
 
-    Category.print_all
+    # Category.print_all
 
     @input = gets.strip
 
-      if @input.downcase == "list"
+      if @input.to_i == 1
+        puts select_pattern_by_category
+
+      elsif @input.downcase == "list"
         menu
       elsif @input.downcase == "exit"
         exit
-      elsif @input.to_i.between?(1, Category.all.count)
-        select_pattern_by_category
+      # elsif @input.to_i.between?(1, Category.all.count)
+      #   select_pattern_by_category
       else
         "Your selection was incorrect, please type list to see the categories or exit to exit the program."
         menu
